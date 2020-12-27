@@ -18,20 +18,17 @@ export default function SearchField() {
   return (
     <form className="search" role="search" onSubmit={(e) => e.preventDefault()}>
       <label className="offscreen" htmlFor="sidebar-search-input">
-        Search for a note by title
+        Search for a room
       </label>
       <input
         id="sidebar-search-input"
-        placeholder="Search"
+        placeholder="Search for a room"
         value={text}
         onChange={(e) => {
           const newText = e.target.value;
           setText(newText);
           startSearching(() => {
-            setLocation((loc) => ({
-              ...loc,
-              searchText: newText,
-            }));
+            setLocation((loc) => ({...loc, searchText: newText}));
           });
         }}
       />

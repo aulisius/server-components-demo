@@ -8,14 +8,13 @@
 
 import {Suspense} from 'react';
 
-import Note from './Note.server';
-import NoteList from './NoteList.server';
-import EditButton from './EditButton.client';
+import Game from './Game.server';
+import RoomList from './RoomList.server';
 import SearchField from './SearchField.client';
-import NoteSkeleton from './NoteSkeleton';
+import GameSkeleton from './NoteSkeleton';
 import NoteListSkeleton from './NoteListSkeleton';
 
-export default function App({selectedId, isEditing, searchText}) {
+export default function App({selectedId, gameMode, searchText}) {
   return (
     <div className="main">
       <section className="col sidebar">
@@ -28,21 +27,20 @@ export default function App({selectedId, isEditing, searchText}) {
             alt=""
             role="presentation"
           />
-          <strong>React Notes</strong>
+          <strong>codewordsgame</strong>
         </section>
         <section className="sidebar-menu" role="menubar">
           <SearchField />
-          <EditButton noteId={null}>New</EditButton>
         </section>
         <nav>
           <Suspense fallback={<NoteListSkeleton />}>
-            <NoteList searchText={searchText} />
+            <RoomList searchText={searchText} />
           </Suspense>
         </nav>
       </section>
       <section key={selectedId} className="col note-viewer">
-        <Suspense fallback={<NoteSkeleton isEditing={isEditing} />}>
-          <Note selectedId={selectedId} isEditing={isEditing} />
+        <Suspense fallback={<GameSkeleton isGameActive={selectedId !== null} />}>
+          <Game selectedId={selectedId} gameMode={gameMode} searchText={searchText} />
         </Suspense>
       </section>
     </div>

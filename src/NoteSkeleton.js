@@ -70,6 +70,6 @@ function NotePreviewSkeleton() {
   );
 }
 
-export default function NoteSkeleton({isEditing}) {
-  return isEditing ? <NoteEditorSkeleton /> : <NotePreviewSkeleton />;
+export default function GameSkeleton({isGameActive}) {
+  return isGameActive ? <NoteEditorSkeleton /> : <NotePreviewSkeleton />;
 }

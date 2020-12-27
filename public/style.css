@@ -459,7 +459,6 @@ ul.notes-list {
 
 .note-editor {
   background: var(--white);
-  display: flex;
   height: 100%;
   width: 100%;
   padding: 58px;
@@ -642,6 +641,40 @@ ul.notes-list {
   padding: 0;
   width: 1px;
   position: absolute;
+}
+
+.grid-parent {
+  width: 800px;
+  display: grid;
+  grid-template: repeat(5, 1fr) / repeat(5, 1fr);
+  gap: 20px;
+}
+
+.red {
+  background-color: var(--red-25);
+}
+
+.blue {
+  background-color: var(--primary-blue);
+}
+
+.yellow {
+  background-color: var(--yellow);
+}
+
+.grey {
+  background-color: var(--gray-20);
+}
+
+.grid-child--checked {
+  border: 1px solid black;
+}
+
+.grid-child {
+  box-shadow: 0 1px 2px 0 #eee5cb;
+  border-radius: 2px;
+  padding: 15px 10px;
+  text-transform: capitalize;
 }
 
 /* ---------------------------------------------------------------------------*/

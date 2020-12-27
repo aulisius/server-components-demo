@@ -53,12 +53,12 @@ export default function SidebarNote({id, title, children, expandedChildren}) {
           startTransition(() => {
             setLocation((loc) => ({
               selectedId: id,
-              isEditing: false,
+              gameMode: 'admin',
               searchText: loc.searchText,
             }));
           });
         }}>
-        Open note for preview
+        Join
       </button>
       <button
         className="sidebar-note-toggle-expand"

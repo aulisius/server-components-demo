@@ -25,7 +25,7 @@ export default function Root({initialCache}) {
 function Content() {
   const [location, setLocation] = useState({
     selectedId: null,
-    isEditing: false,
+    gameMode: "",
     searchText: '',
   });
   const response = useServerResponse(location);
@@ -39,7 +39,7 @@ function Content() {
 function Error({error}) {
   return (
     <div>
-      <h1>Application Error</h1>
+      <h1>Something went wrong!</h1>
       <pre style={{whiteSpace: 'pre-wrap'}}>{error.stack}</pre>
     </div>
   );

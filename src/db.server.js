@@ -6,8 +6,37 @@
  *
  */
 
-import {Pool} from 'react-pg';
-import credentials from '../credentials';
+let rooms = {
+  // ceg: {
+  //   name: 'ceg',
+  //   words: [
+  //     {text: 'hello', type: 'blue', checked: false},
+  //     {text: 'hello', type: 'blue', checked: false},
+  //     {text: 'hello', type: 'blue', checked: false},
+  //     {text: 'hello', type: 'blue', checked: false},
+  //     {text: 'hello', type: 'blue', checked: false},
+  //     {text: 'hello', type: 'blue', checked: false},
+  //   ],
+  // },
+};
 
-// Don't keep credentials in the source tree in a real app!
-export const db = new Pool(credentials);
+let gameInMemory = {};
+
+export let db = {
+  getAllRooms() {
+    return Object.entries(rooms).map((entry) => ({
+      id: entry[0],
+      name: entry[1].name,
+    }));
+  },
+  get(roomId) {
+    return rooms[roomId] ?? null;
+  },
+  delete(roomId) {
+    delete rooms[roomId];
+  },
+  update(roomId, data) {
+    console.log(data);
+    rooms[roomId] = data;
+  },
+};
